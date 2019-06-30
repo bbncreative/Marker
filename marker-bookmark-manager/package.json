@@ -12,11 +12,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && cp -r popup/ build/",
+    "format": "eslint . --fix",
+    "format-check": "eslint .",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
