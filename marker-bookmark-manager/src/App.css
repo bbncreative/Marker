@@ -1,9 +1,31 @@
 .App-header {
-  height: 100px;
+  height: 50px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  line-height: 50px;
+}
+
+h4 {
+  margin: 0 !important;
+  line-height: 50px;
+}
+
+.Nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40px;
+  margin: 10px 0;
+  border-bottom: 1px solid lightgrey;
+}
+
+.Main {
+  width: 100%;
+  overflow-x: hidden;
+  margin: 10px 20px;
+  box-sizing: border-box;
 }

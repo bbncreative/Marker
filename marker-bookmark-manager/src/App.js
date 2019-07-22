@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'antd';
 import Explore from './Explore';
 import Results from './Results';
+import Filter from './Filter';
 import './App.css';
 
 const TABS = {
@@ -16,42 +17,58 @@ class App extends React.Component {
     this.state = {
       tab: TABS.HOME,
       showResults: false,
+      filter: 0,
     };
   }
 
   setTab = tab => this.setState({ tab });
 
   showResults = () => {
-    this.setState({ showResults: true });
+    this.setState({
+      showResults: true,
+    });
   };
 
   clearResults = () => {
     this.setState({ showResults: false });
   };
 
+  setFilter = (val) => {
+    this.setState({ filter: val });
+  }
+
   render() {
+    const { filter, tab, showResults } = this.state;
     return (
       <div className="App">
         <header className="App-header">
           <h4>Marker</h4>
         </header>
-        <nav>
-          <ul>
-            <li>
-              <span onClick={() => this.setTab(TABS.HOME)}>Home</span>
-            </li>
-            <li>
-              <span onClick={() => this.setTab(TABS.EXPLORE)}>Explore</span>
-            </li>
-          </ul>
+        <nav className="Nav">
+          <Button.Group>
+            <Button
+              type={tab === TABS.HOME ? 'primary' : 'default'}
+              onClick={() => this.setTab(TABS.HOME)}
+            >
+              Home
+            </Button>
+            <Button
+              type={tab === TABS.EXPLORE ? 'primary' : 'default'}
+              onClick={() => this.setTab(TABS.EXPLORE)}
+            >
+              Explore
+            </Button>
+          </Button.Group>
         </nav>
-        {this.state.tab === TABS.EXPLORE ? (
-          <Explore />
-        ) : this.state.showResults === true ? (
-          <Results reset={this.clearResults} />
-        ) : (
-          <Button onClick={this.showResults}>Show Results</Button>
-        )}
+        <main className="Main">
+          {tab === TABS.EXPLORE ? (
+            <Explore />
+          ) : showResults === true ? (
+            <Results reset={this.clearResults} filter={filter} />
+          ) : (
+            <Filter getResults={this.showResults} setFilter={this.setFilter} />
+          )}
+        </main>
       </div>
     );
   }

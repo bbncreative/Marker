@@ -5,17 +5,23 @@
   "dependencies": {
     "antd": "^3.19.8",
     "eslint-config-airbnb": "^17.1.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1"
   },
+  "watch": {
+    "build": "react-scripts build"
+  },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && cp -r popup/ build/",
+    "build": "react-scripts build",
+    "full-build": "react-scripts build && cp -r popup/ build/",
     "format": "eslint . --fix",
     "format-check": "eslint .",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch": "npm-watch"
   },
   "browserslist": {
     "production": [
@@ -28,5 +34,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "npm-watch": "^0.6.0"
   }
 }
